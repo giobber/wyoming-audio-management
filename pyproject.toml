@@ -1,0 +1,20 @@
+[project]
+name = "volume"
+version = "0.0.1"
+dependencies = [
+	"keyboard",
+	"python-decouple",
+]
+requires-python = ">= 3.10"
+description = "A Wyoming satellite extension to handle volume"
+readme = "README.md"
+license = {file = "LICENSE"}
+
+
+
+[project.optional-dependencies]
+dev = ["black", "isort"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
