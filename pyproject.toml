@@ -4,6 +4,7 @@ version = "0.0.1"
 dependencies = [
 	"keyboard",
 	"python-decouple",
+	"astral",
 ]
 requires-python = ">= 3.10"
 description = "A Wyoming satellite extension to handle volume"
