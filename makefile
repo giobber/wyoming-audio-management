@@ -33,7 +33,7 @@ update:
 
 service:
 	echo "$(ROOT_DIR)"
-	sed "s|PROJECT_PATH|$(ROOT_DIR)|g" volume.service > /etc/systemd/system/volume.service
+	sed "s|PROJECT_PATH|$(ROOT_DIR)|g" ./system/volume.service > /etc/systemd/system/volume.service
 	systemctl daemon-reload
 	systemctl enable volume.service
 	systemctl start volume.service
