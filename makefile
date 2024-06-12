@@ -5,8 +5,6 @@ PIP=$(VENV)/bin/pip
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 
-.PHONY: clean venv develop update install
-
 
 .PHONY: clean venv
 
