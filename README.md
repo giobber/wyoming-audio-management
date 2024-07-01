@@ -1,4 +1,4 @@
-# wyoming-satellite-extension
+# Wyoming Audio Management
 This project aim to extend functionality for a wyoming satellites build on a raspberry pi.
 This repo contains a couple of scripts I use on my raspberry pi with wyoming satellite installed.
 
