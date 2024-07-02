@@ -17,7 +17,7 @@ venv: clean
 	$(PIP) install -U pip
 
 update:
-	$(PIP) install -r requirements.in
+	$(PIP) install -r requirements.txt
 
 develop: update
 	$(PIP) install -e .[dev]
@@ -25,7 +25,9 @@ develop: update
 install: update
 	$(PIP) install -e .
 
-
+requirements.txt: venv install
+	$(PIP) install -U -e .
+	$(PIP) freeze --exclude-editable > requirements.txt
 
 .PHONY: service
 service:
