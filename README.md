@@ -15,7 +15,8 @@ Altought is impressive the results reach from the wyoming project, only a subset
 On a raspberry pi with Raspberry Pi OS Lite and wyoming-satellite already installed
 ```shell
 $ mkdir git && cd git
-$ git clone https://github.com/giobber/wyoming-satellite-extension.git
-$ cd wyoming-satellite-extension
-$ sudo make install
+$ git clone https://github.com/giobber/wyoming-volume-management.git
+$ cd wyoming-volume-management
+$ make install
+$ sudo make service
 ```

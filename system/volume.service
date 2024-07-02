@@ -2,7 +2,7 @@
 Description=Control volume with media keys and add sound
 
 [Service]
-ExecStart=PROJECT_PATH/.venv/bin/python -m volume
+ExecStart=PROJECT_PATH/.venv/bin/python -m audio.volume
 
 [Install]
 WantedBy=multi-user.target
