@@ -14,6 +14,7 @@ Altought is impressive the results reach from the wyoming project, only a subset
 ## Install
 On a raspberry pi with Raspberry Pi OS Lite and wyoming-satellite already installed
 ```shell
+$ sudo apt install portaudio19-dev 
 $ mkdir git && cd git
 $ git clone https://github.com/giobber/wyoming-volume-management.git
 $ cd wyoming-volume-management

@@ -10,6 +10,8 @@ name = "wyoming-audio"
 version = "0.1.0"
 dependencies = [
   "keyboard",
+  "pyalsaaudio",
+  "pyaudio",
   "python-decouple",
   "astral",
 ]
