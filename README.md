@@ -20,3 +20,17 @@ $ cd wyoming-volume-management
 $ make install
 $ sudo make service
 ```
+
+## Disable audio interfaces
+If you want to disable bult-in audio devices on your Pi (maybe because you use a usb mic/speaker)
+Change `/etc/firmware/config.txt` 
+To disable analogue interface (3.5mm jack on RPI 2/3) comment the line
+```
+# dtparam=audio=on
+```
+
+To disable HDMI audio add noaudio to
+```
+dtoverlay=vc4-kms-v3d,noaudio
+```
+(source: https://www.hifiberry.com/docs/software/configuring-linux-3-18-x/)
