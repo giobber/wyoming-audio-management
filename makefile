@@ -28,6 +28,7 @@ install: update
 requirements.txt: venv install
 	$(PIP) install -U -e .
 	$(PIP) freeze --exclude-editable > requirements.txt
+	$(PIP) install -e .[dev]
 
 .PHONY: service
 service:
