@@ -41,8 +41,8 @@ service:
 
 .PHONY: run lint
 run:
-	$(PYTHON) -m volume
+	$(PYTHON) -m audio
 
 lint: 
-	$(VENV)/bin/black volume
-	$(VENV)/bin/isort --profile black volume
+	$(VENV)/bin/black audio
+	$(VENV)/bin/isort --profile black audio
