@@ -35,16 +35,18 @@ def increase_volume(step: int = settings.VOLUME_STEP):
     mixer = aa.Mixer(cardindex=settings.MIXER_CARD, control=settings.MIXER_CONTROL)
     for i, current in enumerate(mixer.getvolume()):
         mixer.setvolume(min(100, current + step), channel=i)
-    reproduce_sound()
     mixer.close()
+
+    reproduce_sound()
 
 
 def decrease_volume(step: int = settings.VOLUME_STEP):
     mixer = aa.Mixer(cardindex=settings.MIXER_CARD, control=settings.MIXER_CONTROL)
     for i, current in enumerate(mixer.getvolume()):
         mixer.setvolume(max(0, current - step), channel=i)
-    reproduce_sound()
     mixer.close()
+
+    reproduce_sound()
 
 
 if __name__ == "__main__":
