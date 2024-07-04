@@ -19,6 +19,16 @@ SOUND_VOLUME_CHANGE = config(
 MIXER_CONTROL = config("MIXER_CONTROL", "PCM")
 MIXER_CARD = config("MIXER_CARD", 0, cast=int)
 
+HA_SSL = config("HA_SSL", False, bool)
+HA_HOST = config("HA_HOST", "homeassistant.local")
+HA_PORT = config("HA_PORT", 8123, int)
+HA_TOKEN = config("HA_TOKEN", "this_is_invalid")
+
+HA_SSL_METHOD = "https" if HA_SSL else "http"
+HA_URL = config("HA_URL", f"{HA_SSL_METHOD}://{HA_HOST}:{HA_PORT}/api")
+
+HA_VOLUME_ENTITY = config("HA_VOLUME_ENTITY", "helper.assist_volume_level")
+
 
 ASTRAL_CITY = config("ASTRAL_CITY", "Rome")
 ASTRAL_COUNTRY = config("ASTRAL_COUNTRY", "Italy")
