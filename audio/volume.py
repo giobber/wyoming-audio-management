@@ -10,7 +10,10 @@ import pyaudio
 from . import settings
 
 
-def reproduce_sound(sound_path: Path = settings.SOUND_VOLUME_CHANGE):
+def reproduce_sound(sound_path: Path = settings.SOUND_VOLUME_CHANGE, **stream_options):
+    stream_options.setdefault("output", True)
+    stream_options.setdefault("output_device_index", settings.MIXER_CARD)
+
     with wave.open(str(sound_path), "rb") as wf:
         p = pyaudio.PyAudio()
 
@@ -18,7 +21,7 @@ def reproduce_sound(sound_path: Path = settings.SOUND_VOLUME_CHANGE):
             format=p.get_format_from_width(wf.getsampwidth()),
             channels=wf.getnchannels(),
             rate=wf.getframerate(),
-            output=True,
+            **stream_options,
         )
 
         while len(data := wf.readframes(1024)):
@@ -28,23 +31,25 @@ def reproduce_sound(sound_path: Path = settings.SOUND_VOLUME_CHANGE):
         p.terminate()
 
 
-def increase_volume(mixer: aa.Mixer, step: int = settings.VOLUME_STEP):
+def increase_volume(step: int = settings.VOLUME_STEP):
+    mixer = aa.Mixer(cardindex=settings.MIXER_CARD, control=settings.MIXER_CONTROL)
     for i, current in enumerate(mixer.getvolume()):
         mixer.setvolume(min(100, current + step), channel=i)
     reproduce_sound()
+    mixer.close()
 
 
-def decrease_volume(mixer: aa.Mixer, step: int = settings.VOLUME_STEP):
+def decrease_volume(step: int = settings.VOLUME_STEP):
+    mixer = aa.Mixer(cardindex=settings.MIXER_CARD, control=settings.MIXER_CONTROL)
     for i, current in enumerate(mixer.getvolume()):
         mixer.setvolume(max(0, current - step), channel=i)
     reproduce_sound()
+    mixer.close()
 
 
 if __name__ == "__main__":
-    mixer = aa.Mixer(cardindex=settings.MIXER_CARD, control=settings.MIXER_CONTROL)
 
-    keyboard.add_hotkey(115, lambda: increase_volume(mixer))
-    keyboard.add_hotkey(114, lambda: decrease_volume(mixer))
+    keyboard.add_hotkey(115, lambda: increase_volume())
+    keyboard.add_hotkey(114, lambda: decrease_volume())
 
-    while True:
-        time.sleep(0.1)
+    keyboard.wait()
